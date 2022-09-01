@@ -36,7 +36,7 @@ func climbStairs(_ n: Int) -> Int {
 }
 
 
-func climbStartsWithoutDp( _ n:Int) -> Int {
+func climbStairsWithoutDp( _ n:Int) -> Int {
     if n == 1 || n == 2 {
         return n
     }
