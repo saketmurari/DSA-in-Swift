@@ -34,3 +34,24 @@ func climbStairs(_ n: Int) -> Int {
    return countWays(0)
     
 }
+
+
+func climbStartsWithoutDp( _ n:Int) -> Int {
+    if n == 1 || n == 2 {
+        return n
+    }
+    var counter = 2
+    
+    var prev = 2
+    var prev2 = 1
+    
+    while counter < n {
+        
+        let current = prev + prev2
+        prev2 = prev
+        prev = current
+        counter += 1
+    }
+    return prev
+}
+
