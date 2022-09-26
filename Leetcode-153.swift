@@ -13,22 +13,17 @@ class Solution {
         
         var pos = checkPos(nums, 0, right)
         
-        
-        return pos
+        return nums[pos]
     }
     
     func checkPos (_ nums:[Int], _ left:Int, _ right:Int) -> Int {
         
+        if left > right {
+            return left
+        }
         let p = (left+right)/2
         
-        if nums[p] > nums[p+1] {
-            return nums[p+1]
-        }
-        if nums[p-1] > nums[p] {
-           return nums[p] 
-        }
-        
-        if nums[p] > nums[0] {
+        if nums[p] >= nums[0] {
             return checkPos(nums, p+1, right)
         }
         else {
@@ -36,8 +31,3 @@ class Solution {
         }
         
     }
-    
-    
-    
-    
-}
