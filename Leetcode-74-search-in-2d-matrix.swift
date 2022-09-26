@@ -53,3 +53,38 @@ class Solution {
     }
     
 }
+class Solution {
+    var mat = [[Int]]()
+    func searchMatrix(_ matrix: [[Int]], _ target: Int) -> Bool {
+        
+        if target < matrix[0][0] || target > matrix.last!.last! {
+            return false
+        }
+        var rows = matrix.count
+        var columns = matrix[0].count
+        
+        mat = matrix
+        
+        return findRowPos(target, 0, rows*columns-1, columns)
+    }
+    
+    func findRowPos( _ target: Int, _ left: Int, _ right: Int, _ cols: Int) -> Bool {
+        
+        if left > right {
+            return false
+        }
+        
+        let pivot = left + (right-left)/2
+        
+        if target == mat[pivot/cols][pivot%cols] {
+            return true
+        }
+        else if target > mat[pivot/cols][pivot%cols] {
+            return findRowPos(target, pivot+1, right, cols)
+        }
+        else {
+             return findRowPos(target, left, pivot-1, cols)
+        }
+    }
+    
+}
